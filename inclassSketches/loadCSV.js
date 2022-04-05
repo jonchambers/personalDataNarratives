@@ -2,6 +2,7 @@ let table;
 let companyMenu;
 let canvas
 let imageArray = [];
+let submitButton;
 
 function preload() {
   //my table is comma separated value "csv"
@@ -19,8 +20,12 @@ function setup() {
 
 
 
+
   companyMenu = createSelect();
   companyMenu.option('Select Company')
+
+  submitButton = createButton('Submit');
+
   //cycle through the table rows
   for (let i = 0; i < table.getRowCount(); i++){
     imageArray[i] = loadImage("images/" + table.getString(i, 'image'));
@@ -38,7 +43,8 @@ function setup() {
 print(imageArray)
   //trigger the changeData function when
   //menu is changeData
-  companyMenu.changed(changeData);
+  //companyMenu.changed();
+  submitButton.mousePressed(changeData);
 }
 
 function changeData(){
